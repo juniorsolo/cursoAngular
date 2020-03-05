@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Menuitem } from '../menu-item/menu-item.model';
+import { RestaurantsService } from 'app/restaurants/restaurants.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mt-menu',
@@ -6,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  menu: Observable<Menuitem[]>
+
+  constructor(private restaurantService : RestaurantsService,
+              private route : ActivatedRoute) { }
 
   ngOnInit() {
   }
