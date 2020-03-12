@@ -16,6 +16,8 @@ export class MenuComponent implements OnInit {
               private route : ActivatedRoute) { }
 
   ngOnInit() {
+    this.menu = this.restaurantService//Obtendo parametro do componente pai.
+        .menuOfRestaurants(this.route.parent.snapshot.params['id'])
   }
 
 }
