@@ -21,4 +21,17 @@ export class ShoopingCartComponent implements OnInit {
     return this.shoopingCartService.total()
   }
 
+  clear(){
+    console.log('limpando carrinho')
+    this.shoopingCartService.clear();
+  }
+
+  removeItem(item: any){
+    this.shoopingCartService.removeItem(item)
+  }
+
+  addItem(item : any){
+    this.shoopingCartService.addItem(item)
+  }
+
 }

@@ -11,17 +11,24 @@ export class ShoopingCartService {
     addItem(item : Menuitem) {
         //verifica se o item já está na lista
         let foundItem = this.items.find((mItem) => mItem.menuItem.id === item.id)
-        console.log('found item: ' + foundItem)
+        //console.log('found item: ' + foundItem)
         if(foundItem){
             foundItem.quantity = foundItem.quantity + 1
-        }{
+        }else{
             this.items.push(new CartItem(item))
         }
         console.log('adicionado')
     }
 
-    removeItem(item: CartItem){
-        this.items.splice(this.items.indexOf(item), 1)
+    removeItem(item : CartItem){
+
+        let foundItem = this.items.find((mItem) => mItem.menuItem.id === item.menuItem.id)
+       
+        if(foundItem && foundItem.quantity > 1){
+            foundItem.quantity = foundItem.quantity - 1
+        }else{
+            this.items.splice(this.items.indexOf(item), 1)
+        }
     }
 
     total(): number {  
