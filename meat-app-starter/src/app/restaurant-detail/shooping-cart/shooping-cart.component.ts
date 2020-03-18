@@ -18,7 +18,7 @@ export class ShoopingCartComponent implements OnInit {
   }
 
   total(): number{
-    return this.shoopingCartService.total();
+    return this.shoopingCartService.total()
   }
 
 }

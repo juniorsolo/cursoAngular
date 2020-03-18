@@ -2,7 +2,7 @@ import { CartItem } from "./cart-item.model";
 import { Menuitem } from "../menu-item/menu-item.model";
 
 export class ShoopingCartService {
-    items: CartItem[]
+    items: CartItem[] = []
 
     clear(){
         this.items = []
@@ -11,21 +11,21 @@ export class ShoopingCartService {
     addItem(item : Menuitem) {
         //verifica se o item já está na lista
         let foundItem = this.items.find((mItem) => mItem.menuItem.id === item.id)
-
+        console.log('found item: ' + foundItem)
         if(foundItem){
             foundItem.quantity = foundItem.quantity + 1
         }{
             this.items.push(new CartItem(item))
         }
+        console.log('adicionado')
     }
 
     removeItem(item: CartItem){
         this.items.splice(this.items.indexOf(item), 1)
     }
 
-    total(): number {
-        return this.items
-        .map(item => item.value())
-        .reduce((prev, value) => prev + value, 0);
+    total(): number {  
+        return this.items.map(item => item.value()).reduce((prev, value) => prev + value, 0);
+        
     }
 }
