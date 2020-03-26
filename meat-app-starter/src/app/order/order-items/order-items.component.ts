@@ -26,6 +26,7 @@ export class OrderItemsComponent implements OnInit {
   }
 
   emitRemove(item: CartItem){
+    console.log("remove:..." +  item.menuItem.id)
     this.remove.emit(item)
   }
 }
