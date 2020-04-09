@@ -4,12 +4,15 @@ import { OrderService } from './order.service';
 import { CartItem } from 'app/restaurant-detail/shooping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html'
 })
 export class OrderComponent implements OnInit {
+
+  orderForm : FormGroup
 
   delivery: number = 8
 
@@ -20,7 +23,8 @@ export class OrderComponent implements OnInit {
   ]
 
   constructor(private orderService: OrderService,
-              private router: Router) { }
+              private router: Router,
+              private builder : FormBuilder) { }
 
   ngOnInit() {
   }
