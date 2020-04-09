@@ -4,7 +4,7 @@ import { OrderService } from './order.service';
 import { CartItem } from 'app/restaurant-detail/shooping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mt-order',
@@ -23,10 +23,20 @@ export class OrderComponent implements OnInit {
   ]
 
   constructor(private orderService: OrderService,
-              private router: Router,
-              private builder : FormBuilder) { }
+              private router: Router) { }
 
   ngOnInit() {
+    this.orderForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      email: new FormControl(''),
+      emailConfirmation: new FormControl(''),
+      address: new FormControl(''),
+      number: new FormControl(''),
+      optionalAddress: new FormControl(''),
+      paymentOption : new FormControl('')
+
+    })
+
   }
 
   itemsValue(): number {
@@ -50,6 +60,7 @@ export class OrderComponent implements OnInit {
   }
 
   checkOrder(order: Order){
+    this.orderForm.value
     order.orderItems = this.cartItems().
     map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id))
     this.orderService.checkOrder(order).subscribe((orderId: string) => {
