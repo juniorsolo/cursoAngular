@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ShoopingCartService } from "app/restaurant-detail/shooping-cart/shooping-cart.service";
 import { RestaurantsService } from "app/restaurants/restaurants.service";
 import { OrderService } from "app/order/order.service";
+import { SnackbarComponent } from './messages/snackbar/snackbar.component';
 
 /*
   Módulo responsável por compartilhar os componentes da pasta shared, 
@@ -16,9 +17,9 @@ import { OrderService } from "app/order/order.service";
     importados por quem
 */
 @NgModule({
-    declarations:[InputComponent, RadioComponent, RatingComponent],
+    declarations:[InputComponent, RadioComponent, RatingComponent, SnackbarComponent],
     imports: [CommonModule, FormsModule, ReactiveFormsModule],
-    exports: [InputComponent, RadioComponent,
+    exports: [InputComponent, RadioComponent,SnackbarComponent,
               RatingComponent, CommonModule,
               FormsModule, ReactiveFormsModule]
 })
