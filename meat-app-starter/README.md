@@ -24,6 +24,9 @@
 
 `json-server db.json`
 
+## Gerando build para Producao
+`ng build --prod`
+
 ## Goodies
 
 Expressões regulares usadas na validação de formulários

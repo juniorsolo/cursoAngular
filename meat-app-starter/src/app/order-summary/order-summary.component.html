@@ -8,7 +8,7 @@
     <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando!</p>
     <p><b>Avalie</b> sua experiência:</p> 
     <p> <mt-rating (rated)= "postRate($event)"></mt-rating></p>
-    <p [hidden]="!rated" style="color:#128410">
+    <p *ngIf="!rated" style="color:#128410">
        Obrigado pela sua avaliação!
     </p>
   </div>
