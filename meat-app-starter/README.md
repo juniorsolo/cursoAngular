@@ -27,6 +27,9 @@
 ## Gerando build para Producao
 `ng build --prod`
 
+## Gerando buil para Producao para subdiretorio no servidor de aplicacao
+`ng build --prod --bh=/meat/` 
+
 ## Goodies
 
 Expressões regulares usadas na validação de formulários
