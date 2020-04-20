@@ -6,9 +6,9 @@
   <div class="jumbotron">
     <h2 style="color:#2c8c26">Pedido Conluído</h2>
     <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando!</p>
-    <p><b>Avalie</b> sua experiência:</p> 
+    <p><b>Avalie</b> sua experiência:</p>
     <p> <mt-rating (rated)= "postRate($event)"></mt-rating></p>
-    <p *ngIf="!rated" style="color:#128410">
+    <p *ngIf="rated > 0" style="color:#128410">
        Obrigado pela sua avaliação!
     </p>
   </div>

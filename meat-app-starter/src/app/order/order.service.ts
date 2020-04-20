@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ShoopingCartService } from "app/restaurant-detail/shooping-cart/shooping-cart.service";
 import { CartItem } from "app/restaurant-detail/shooping-cart/cart-item.model";
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { MEAT_API } from "app/app.api";
@@ -12,7 +12,7 @@ import { Order } from "./order.model";
 export class OrderService{
 
     constructor(private cartService: ShoopingCartService,
-                private http : Http){}
+                private http : HttpClient){}
 
     itemsValue(): number{
         return this.cartService.total()
@@ -39,13 +39,8 @@ export class OrderService{
     }
 
     checkOrder(order: Order): Observable<string>{
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json')
-        return this.http.post(`${MEAT_API}/orders`, 
-                             JSON.stringify(order), 
-                             new RequestOptions({headers : headers}))
-                             .map(response => response.json()) 
-                             .map(order => order.id) 
-    // Pode retornar apenas o primeiro map com o json, e adaptar o OrderComponent.ts
+        return this.http.post<Order>(`${MEAT_API}/orders`, order)
+        .map(order => order.id) 
+    // Pode retornar o Order com o json, tem que adaptar o OrderComponent.ts
     }
 }
